@@ -2,3 +2,5 @@ name: VirtualPVP
 version: '${project.version}'
 main: me.justacat.virtualpvp.VirtualPVP
 api-version: 1.17
+commands:
+  openGame:
