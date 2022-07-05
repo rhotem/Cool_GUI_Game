@@ -2,9 +2,9 @@ package me.justacat.virtualpvp;
 
 import me.justacat.virtualpvp.gui.GuiBuilder;
 import me.justacat.virtualpvp.items.GameItem;
-import me.justacat.virtualpvp.items.MoneyBag;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +19,7 @@ public class SoloGame {
 
     private List<GameItem> gameItems = new ArrayList<>();
     private int money = 0;
+    private int moneyPerSecond = 0;
 
     public static void startNewGame(Player player) {
 
@@ -31,6 +32,17 @@ public class SoloGame {
     public SoloGame(Player player) {
         this.player = player;
         activeGames.put(player.getUniqueId(), this);
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (moneyPerSecond > 0) {
+                    money = money + moneyPerSecond;
+                    openGame();
+                }
+            }
+
+        }.runTaskTimer(VirtualPVP.instance, 20, 20);
     }
 
     public void openGame() {
@@ -50,7 +62,11 @@ public class SoloGame {
 
         }
 
-        guiBuilder.setItem(31, Material.GOLD_INGOT, 1, "&aYour Money: " + money, null, true);
+        guiBuilder.setItem(31, Material.GOLD_INGOT, 1, "&aYour Money: &6" + money, null, true);
+
+        guiBuilder.setItem(30, Material.GOLD_BLOCK, 1, "&aMoney Per Second: &6" + moneyPerSecond, null, true);
+
+        guiBuilder.setEmpty(Material.GLASS_PANE, 1, "&0", null, true);
 
         player.openInventory(guiBuilder.toInventory());
 
@@ -59,13 +75,18 @@ public class SoloGame {
     public void resetGameItems() {
         gameItems.clear();
         for (int i = 0; i < 5; i++) {
-            MoneyBag moneyBag = new MoneyBag(Material.GOLD_INGOT, 1, 5);
-            gameItems.add(moneyBag);
+
+
+            GameItem gameItem = GameItem.randomGameItem();
+            gameItems.add(gameItem);
+
+
         }
     }
 
     public void addMoney(int amount) {money = money + amount;}
 
+    public void addMoneyPerSecond(int amount) {moneyPerSecond = moneyPerSecond + amount;}
     public List<GameItem> getGameItems() {return gameItems;}
 
     public GameItem getGameItemBySlot(int slot) {

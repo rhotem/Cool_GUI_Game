@@ -17,16 +17,27 @@ public class InventoryEvents implements Listener {
 
         if (e.getView().getTitle().equals("Solo Game")) {
 
+            int slot = e.getRawSlot();
+
+            if (slot > 35) return;
+            if (slot < 0) return;
+
+            e.setCancelled(true);
+
             Player player = (Player) e.getWhoClicked();
 
             SoloGame soloGame = SoloGame.activeGames.get(player.getUniqueId());
 
-            GameItem gameItem = soloGame.getGameItemBySlot(e.getRawSlot());
 
-            gameItem.onClick(player);
-            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 0.5F, 0.5F);
-            soloGame.resetGameItems();
-            soloGame.openGame();
+            if (e.getCurrentItem().getItemMeta().getLocalizedName().equals("GameItem")) {
+                GameItem gameItem = soloGame.getGameItemBySlot(e.getRawSlot());
+
+                gameItem.onClick(player);
+                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 0.7F);
+                soloGame.resetGameItems();
+                soloGame.openGame();
+            }
+
 
 
         }

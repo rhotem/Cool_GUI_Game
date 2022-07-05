@@ -1,8 +1,6 @@
 package me.justacat.virtualpvp.items;
 
 import me.justacat.virtualpvp.misc.Chat;
-import net.kyori.adventure.text.Component;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -10,7 +8,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public abstract class GameItem {
@@ -18,6 +15,7 @@ public abstract class GameItem {
     protected ItemStack item;
 
     public GameItem(Material type, int amount,String name, String... lore) {
+
         ItemStack itemStack = new ItemStack(type, amount);
 
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -42,5 +40,17 @@ public abstract class GameItem {
     public ItemStack getItem() {return item;}
 
     public abstract void onClick(Player player);
+
+    public static GameItem randomGameItem() {
+
+        double random = Math.random();
+
+        if (random > 0.9) {
+            return MoneyGenerator.randomMoneyGenerator();
+        } else {
+            return MoneyBag.randomMoneyBag();
+        }
+
+    }
 
 }
