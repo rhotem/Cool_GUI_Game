@@ -39,7 +39,7 @@ public abstract class GameItem {
 
     public ItemStack getItem() {return item;}
 
-    public abstract void onClick(Player player);
+    public abstract void onClick(Player player, int slotNumber);
 
     public static GameItem randomGameItem() {
 

@@ -1,6 +1,7 @@
 package me.justacat.virtualpvp.items;
 
 import me.justacat.virtualpvp.SoloGame;
+import me.justacat.virtualpvp.misc.Chat;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
@@ -17,9 +18,15 @@ public class MoneyBag extends GameItem {
 
 
     @Override
-    public void onClick(Player player) {
+    public void onClick(Player player, int slotNumber) {
         SoloGame soloGame = SoloGame.activeGames.get(player.getUniqueId());
         soloGame.addMoney(moneyGives);
+        if (ThreadLocalRandom.current().nextInt(1, slotNumber + 2) > 3) {
+            int random = ThreadLocalRandom.current().nextInt(1, slotNumber * 10);
+            soloGame.addMoney(random);
+            player.sendMessage(Chat.colorMessage("&6+" + random + "coins! (Slot bonus)"));
+        }
+
     }
 
     public static Material generatePreview(int moneyGives) {

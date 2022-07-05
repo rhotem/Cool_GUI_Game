@@ -16,7 +16,7 @@ public class MoneyGenerator extends GameItem {
     }
 
     @Override
-    public void onClick(Player player) {
+    public void onClick(Player player, int slotNumber) {
 
         SoloGame soloGame = SoloGame.activeGames.get(player.getUniqueId());
 
