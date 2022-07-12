@@ -90,7 +90,7 @@ public class SoloGame {
         for (int slot : gameSlots) {
 
             if (slotCooldowns.containsKey(slot - 10)) {
-                guiBuilder.setItem(slot, Material.GRAY_STAINED_GLASS_PANE, 1, "&7New item in &b" + slotCooldowns.get(slot - 10) + "&7 seconds!", null, true);
+                guiBuilder.setItem(slot, Material.GRAY_STAINED_GLASS_PANE, slotCooldowns.get(slot - 10), "&7New item in &b" + slotCooldowns.get(slot - 10) + "&7 seconds!", null, true);
             } else {
                 guiBuilder.setItem(slot, getSlotItem(slot));
             }
