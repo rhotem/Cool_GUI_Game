@@ -1,9 +1,9 @@
-package me.justacat.guigame;
+package me.justacat.GuiGame;
 
-import me.justacat.guigame.commands.OpenGameCommand;
-import me.justacat.guigame.listeners.InventoryEvents;
-import me.justacat.guigame.listeners.JoinQuitEvents;
-import me.justacat.guigame.misc.FileManager;
+import me.justacat.GuiGame.commands.OpenGameCommand;
+import me.justacat.GuiGame.listeners.InventoryEvents;
+import me.justacat.GuiGame.listeners.JoinQuitEvents;
+import me.justacat.GuiGame.misc.FileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

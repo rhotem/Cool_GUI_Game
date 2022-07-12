@@ -1,6 +1,6 @@
 name: GuiGame
 version: '${project.version}'
-main: me.justacat.guigame.GuiGame
+main: me.justacat.GuiGame.GuiGame
 api-version: 1.17
 commands:
   openGame:

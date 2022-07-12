@@ -1,6 +1,6 @@
-package me.justacat.guigame.commands;
+package me.justacat.GuiGame.commands;
 
-import me.justacat.guigame.SoloGame;
+import me.justacat.GuiGame.SoloGame;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

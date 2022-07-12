@@ -1,6 +1,6 @@
-package me.justacat.guigame.items;
+package me.justacat.GuiGame.items;
 
-import me.justacat.guigame.SoloGame;
+import me.justacat.GuiGame.SoloGame;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 

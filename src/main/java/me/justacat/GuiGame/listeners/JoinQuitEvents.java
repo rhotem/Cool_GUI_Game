@@ -1,7 +1,7 @@
-package me.justacat.guigame.listeners;
+package me.justacat.GuiGame.listeners;
 
-import me.justacat.guigame.SoloGame;
-import me.justacat.guigame.misc.FileManager;
+import me.justacat.GuiGame.SoloGame;
+import me.justacat.GuiGame.misc.FileManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

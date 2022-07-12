@@ -1,7 +1,7 @@
-package me.justacat.guigame.misc;
+package me.justacat.GuiGame.misc;
 
-import me.justacat.guigame.GuiGame;
-import me.justacat.guigame.SoloGame;
+import me.justacat.GuiGame.GuiGame;
+import me.justacat.GuiGame.SoloGame;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
