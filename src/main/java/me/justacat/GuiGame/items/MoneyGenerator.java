@@ -1,6 +1,6 @@
-package me.justacat.virtualpvp.items;
+package me.justacat.GuiGame.items;
 
-import me.justacat.virtualpvp.SoloGame;
+import me.justacat.GuiGame.SoloGame;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 

@@ -1,4 +1,4 @@
-package me.justacat.virtualpvp.misc;
+package me.justacat.GuiGame.misc;
 
 import org.bukkit.ChatColor;
 

@@ -1,6 +1,6 @@
-package me.justacat.virtualpvp.commands;
+package me.justacat.GuiGame.commands;
 
-import me.justacat.virtualpvp.SoloGame;
+import me.justacat.GuiGame.SoloGame;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

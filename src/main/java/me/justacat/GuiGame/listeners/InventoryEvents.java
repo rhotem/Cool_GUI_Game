@@ -1,7 +1,7 @@
-package me.justacat.virtualpvp.listeners;
+package me.justacat.GuiGame.listeners;
 
-import me.justacat.virtualpvp.SoloGame;
-import me.justacat.virtualpvp.items.GameItem;
+import me.justacat.GuiGame.SoloGame;
+import me.justacat.GuiGame.items.GameItem;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

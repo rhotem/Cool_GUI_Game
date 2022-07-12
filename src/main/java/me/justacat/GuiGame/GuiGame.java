@@ -1,7 +1,7 @@
-package me.justacat.virtualpvp;
+package me.justacat.GuiGame;
 
-import me.justacat.virtualpvp.commands.OpenGameCommand;
-import me.justacat.virtualpvp.listeners.InventoryEvents;
+import me.justacat.GuiGame.commands.OpenGameCommand;
+import me.justacat.GuiGame.listeners.InventoryEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
