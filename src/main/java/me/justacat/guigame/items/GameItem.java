@@ -1,6 +1,6 @@
-package me.justacat.GuiGame.items;
+package me.justacat.guigame.items;
 
-import me.justacat.GuiGame.misc.Chat;
+import me.justacat.guigame.misc.Chat;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;

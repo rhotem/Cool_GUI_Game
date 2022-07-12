@@ -1,7 +1,7 @@
-package me.justacat.GuiGame.listeners;
+package me.justacat.guigame.listeners;
 
-import me.justacat.GuiGame.SoloGame;
-import me.justacat.GuiGame.items.GameItem;
+import me.justacat.guigame.SoloGame;
+import me.justacat.guigame.items.GameItem;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package me.justacat.GuiGame.misc;
+package me.justacat.guigame.misc;
 
 import org.bukkit.ChatColor;
 

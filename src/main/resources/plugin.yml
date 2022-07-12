@@ -1,6 +1,6 @@
 name: GuiGame
 version: '${project.version}'
-main: me.justacat.virtualpvp.VirtualPVP
+main: me.justacat.guigame.GuiGame
 api-version: 1.17
 commands:
   openGame:
