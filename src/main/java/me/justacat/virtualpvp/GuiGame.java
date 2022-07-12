@@ -5,10 +5,10 @@ import me.justacat.virtualpvp.listeners.InventoryEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class VirtualPVP extends JavaPlugin {
+public final class GuiGame extends JavaPlugin {
 
 
-    public static VirtualPVP instance;
+    public static GuiGame instance;
     @Override
     public void onEnable() {
         instance = this;

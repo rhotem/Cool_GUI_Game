@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.justacat</groupId>
-    <artifactId>VirtualPVP</artifactId>
+    <artifactId>GuiGame</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>VirtualPVP</name>
+    <name>GuiGame</name>
 
     <properties>
         <java.version>1.8</java.version>

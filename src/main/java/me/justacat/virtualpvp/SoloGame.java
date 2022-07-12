@@ -83,7 +83,7 @@ public class SoloGame {
 
             }
 
-        }.runTaskTimer(VirtualPVP.instance, 20, 20);
+        }.runTaskTimer(GuiGame.instance, 20, 20);
     }
 
     public void openGame() {
