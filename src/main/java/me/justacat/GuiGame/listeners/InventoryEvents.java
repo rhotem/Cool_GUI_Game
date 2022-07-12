@@ -58,7 +58,7 @@ public class InventoryEvents implements Listener {
             } else if (item.getType() == Material.RED_STAINED_GLASS_PANE || item.getType() == Material.GRAY_STAINED_GLASS_PANE)
                 player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, 0.5F, 1F);
             }
-        }
+    }
 
 }
 

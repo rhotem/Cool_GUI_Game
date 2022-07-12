@@ -7,7 +7,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GameItem {
@@ -20,16 +19,13 @@ public abstract class GameItem {
 
         ItemMeta itemMeta = itemStack.getItemMeta();
 
-        List<String> newLore = new ArrayList<>();
-        for (String line : lore) {
-            newLore.add(Chat.colorMessage(line));
-        }
+        List<String> newLore = Chat.colorList(lore); //just colors the lore
 
         itemMeta.setLore(newLore);
 
         itemMeta.setLocalizedName("GameItem");
 
-        itemMeta.addItemFlags(ItemFlag.values());
+        itemMeta.addItemFlags(ItemFlag.values()); //hide all the flags
 
         itemMeta.setDisplayName(Chat.colorMessage(name));
 

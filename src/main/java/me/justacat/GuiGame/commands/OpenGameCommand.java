@@ -1,6 +1,7 @@
 package me.justacat.GuiGame.commands;
 
 import me.justacat.GuiGame.SoloGame;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,9 +21,13 @@ public class OpenGameCommand implements CommandExecutor {
             SoloGame soloGame = SoloGame.activeGames.get(player.getUniqueId());
 
             soloGame.openGame();
+            return true;
 
+        } else {
+            Bukkit.getLogger().warning("You have to be a player to execute this command!");
+            return false;
         }
-        return true;
+
 
     }
 }

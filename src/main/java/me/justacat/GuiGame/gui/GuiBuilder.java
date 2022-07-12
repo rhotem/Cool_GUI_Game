@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.HashMap;
 import java.util.List;
 
-public class GuiBuilder {
+public class GuiBuilder { //Builder class I am using in most of my projects
 
     private HashMap<Integer, ItemStack> slots = new HashMap<>();
     private int size = 36;

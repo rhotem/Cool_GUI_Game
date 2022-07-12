@@ -21,7 +21,8 @@ public class SoloGame {
     public static HashMap<UUID, SoloGame> activeGames = new HashMap<>();
 
     private List<GameItem> gameItems = new ArrayList<>();
-    private HashMap<Integer, ItemStack> displays = new HashMap<>();
+    private HashMap<Integer, Integer> slotCooldowns = new HashMap<>();
+
     private int money = 0;
     private int moneyPerSecond = 0;
 
@@ -43,40 +44,30 @@ public class SoloGame {
             @Override
             public void run() {
 
-                for (int i = 1; i <= 5; i++) {
+                for (int i = 1; i <= 5; i++) { //for each slot
 
-                    if (displays.containsKey(i) && displays.get(i).getItemMeta().getLocalizedName().contains("_seconds")) {
+                    if (slotCooldowns.containsKey(i)) { //checks the cooldown
 
 
-                        int secondsLeft = Integer.parseInt(displays.get(i).getItemMeta().getLocalizedName().replace("_seconds", ""));
-
-                        secondsLeft = secondsLeft - 1;
+                        int secondsLeft = slotCooldowns.get(i) - 1;
 
                         if (secondsLeft > 0) {
-                            ItemStack itemStack = displays.get(i);
-                            ItemMeta itemMeta = itemStack.getItemMeta();
 
-                            itemMeta.setLocalizedName(secondsLeft + "_seconds");
-
-                            itemMeta.setDisplayName(Chat.colorMessage("&7New item in &b" + secondsLeft + "&7 seconds!"));
-
-                            itemStack.setItemMeta(itemMeta);
-
-                            displays.put(i, itemStack);
+                            slotCooldowns.put(i, secondsLeft);
 
                         } else {
-                            displays.remove(i);
+                            slotCooldowns.remove(i);
                         }
 
                     }
                 }
 
                 if (moneyPerSecond > 0) {
-                    money = money + moneyPerSecond;
+                    money = money + moneyPerSecond; //gives the money per second reward
                 }
 
                 if (player.getOpenInventory().getTitle().equals("Solo Game")) {
-                        openGame();
+                        openGame(); //if the game already open, refresh it
                 }
 
 
@@ -98,11 +89,12 @@ public class SoloGame {
 
         for (int slot : gameSlots) {
 
-                if (displays.containsKey(slot - 10)) {
-                    guiBuilder.setItem(slot, displays.get(slot - 10));
-                } else {
-                    guiBuilder.setItem(slot, getSlotItem(slot));
-                }
+            if (slotCooldowns.containsKey(slot - 10)) {
+                guiBuilder.setItem(slot, Material.GRAY_STAINED_GLASS_PANE, 1, "&7New item in &b" + slotCooldowns.get(slot - 10) + "&7 seconds!", null, true);
+            } else {
+                guiBuilder.setItem(slot, getSlotItem(slot));
+            }
+
 
 
 
@@ -132,28 +124,19 @@ public class SoloGame {
 
     public void resetSlot(int slotNumber) {
 
+        //puts a new game item there
         gameItems.add(slotNumber - 1, GameItem.randomGameItem());
         gameItems.remove(slotNumber);
 
-        ItemStack item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
-
-        ItemMeta itemMeta = item.getItemMeta();
-
-        itemMeta.setLocalizedName(6 - slotNumber + "_seconds");
-
-        itemMeta.setDisplayName(Chat.colorMessage("&7New item in &b" + (6 - slotNumber) + "&7 seconds!"));
-
-        item.setItemMeta(itemMeta);
-
-        displays.put(slotNumber, item);
-
+        //starts the cooldown
+        slotCooldowns.put(slotNumber, 6 - slotNumber);
 
     }
 
     public ItemStack getSlotItem(int slot) {
         if (slotsUnlocked >= slot - 10) {
-            return gameItems.get(slot - 11).getItem();
-        } else {
+            return gameItems.get(slot - 11).getItem(); //slot unlocked, displaying the item
+        } else { //slot locked!
             ItemStack item = new ItemStack(Material.RED_STAINED_GLASS_PANE);
 
             ItemMeta itemMeta = item.getItemMeta();
@@ -162,12 +145,16 @@ public class SoloGame {
 
             int price = (int) (Math.pow(slot - 10, 3) * 1000);
 
-            if (slotsUnlocked == slot - 11) {
+            if (slotsUnlocked == slot - 11) { //can be unlocked
+
                 itemMeta.setLore(Chat.colorList("&0", "&7Click here to unlock for " + price + " &7coins!"));
                 itemMeta.setLocalizedName("lockedSlot:" + price);
-            } else {
+
+            } else { //need to unlock the previous slot first
+
                 itemMeta.setLore(Chat.colorList("&0", "&7Buy the previous slot before unlocking this one!"));
                 itemMeta.setLocalizedName("lockedSlot!");
+
             }
 
 
@@ -180,10 +167,14 @@ public class SoloGame {
     public void addMoney(int amount) {money = money + amount;}
 
     public int getMoney() {return money;}
+    public int getMoneyPerSecond() {return moneyPerSecond;}
+    public int getSlotsUnlocked() {return slotsUnlocked;}
+    public void setMoney(int money) {this.money = money;}
+    public void setMoneyPerSecond(int moneyPerSecond) {this.moneyPerSecond = moneyPerSecond;}
+    public void setSlotsUnlocked(int slotsUnlocked) {this.slotsUnlocked = slotsUnlocked;}
     public void unlockSlot() {slotsUnlocked++;}
 
     public void addMoneyPerSecond(int amount) {moneyPerSecond = moneyPerSecond + amount;}
-    public List<GameItem> getGameItems() {return gameItems;}
 
     public GameItem getGameItemBySlot(int slot) {
 
